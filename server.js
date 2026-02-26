@@ -6,6 +6,9 @@ import path from "path";
 import connectDB from "./config/db.js";
 import { authRoute } from "./routes/authRoute.js";
 import { userRoute } from "./routes/userRoute.js";
+import { touristRoute } from "./routes/touristPlaceRoute.js";
+import { activityRoute } from "./routes/activityRoute.js";
+import { translationRoute } from "./routes/translationRoute.js";
 
 
 dotenv.config();
@@ -30,6 +33,10 @@ app.use(express.json());
 //define Routes
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use("/api/touristPlace", touristRoute);
+app.use("/api/activity", activityRoute);
+app.use("/api/translate", translationRoute);
+
 //start server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
