@@ -9,7 +9,7 @@ export const uploadProfileImage = async (req, res) => {
             i
         }
         if (!req.file) {
-            return res.status(400).json({ message: "No file uploded" });
+            return res.status(400).json({ message: "No file uploaded" });
         }
 
         const base64String = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
@@ -30,7 +30,7 @@ export const uploadProfileImage = async (req, res) => {
         await user.save();
 
         res.json({
-            message: "Profile Impge Uploaded",
+            message: "Profile Image Uploaded",
             profileImgUrl: user.profileImgUrl
         })
     } catch (error) {
