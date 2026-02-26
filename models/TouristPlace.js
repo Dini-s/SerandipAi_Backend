@@ -1,20 +1,25 @@
 import mongoose from "mongoose";
 
 const touristPlaceSchema = new mongoose.Schema({
-    externalPlaceId: String,
-    source: String,
     name: String,
-    type: String,
-
+    description: {
+        type: String,
+        required: true
+    },
+    category: String,
+    province: String,
+    images: [String],
     location: {
         type: {
             type: String,
-            default: "Point"
+            enum: ["Point"],
+            required: true
         },
-        coordinates: [Number]
-    },
-    rating: Number,
-    images: [String]
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    }
 });
 
 touristPlaceSchema.index({ location: "2dsphere" });

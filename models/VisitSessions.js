@@ -1,41 +1,13 @@
 import mongoose from "mongoose";
 
-const visitSessionSchema = new mongoose.Schema({
-    userId: {
-        typr: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+const touristActivitySchema = new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    touristPlace: { type: mongoose.Schema.Types.ObjectId, ref: "TouristPlace" },
+    action: {
+        type: String,
+        enum: ["viewed", "clicked_hotel", "language_changed"]
     },
-
-    startLocation: {
-        type: {
-            type: String,
-            default: "Point"
-        },
-        coordinates: [Number]
-    },
-    currentLocation: {
-        type: {
-            type: String,
-            default: "Point"
-        },
-        coordinates: [Number]
-    },
-
-    aiPredictedLanguages: {
-        type: [String],
-        validate: v => v.length >= 5
-    },
-    isActive: {
-        type: Boolean,
-        default: true
-    }
-
+    languageUsed: String
 }, { timestamps: true });
 
-
-visitSessionSchema.index({
-    currentLocation: "2dsphere"
-})
-
-
-export default mongoose.model("VisitSession", visitSessionSchema);
+export default mongoose.model("TouristActivity", touristActivitySchema);
