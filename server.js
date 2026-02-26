@@ -25,8 +25,10 @@ app.use(
 );
 
 //connect database
-connectDB();
-
+//connect database - only connect if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+    connectDB();
+}
 //middleware
 app.use(express.json());
 
@@ -38,5 +40,9 @@ app.use("/api/activity", activityRoute);
 app.use("/api/translate", translationRoute);
 
 //start server
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+if (process.env.NODE_ENV !== 'test') {
+    const PORT = process.env.PORT || 8000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
+
+export default app;
