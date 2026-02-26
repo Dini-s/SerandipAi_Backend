@@ -1,5 +1,5 @@
 import express from "express";
-import upload from "../config/multer.js";
+import { upload } from "../config/multer.js";
 import verifyToken from "../middleware/authMiddleware.js";
 import { uploadProfileImage } from "../middleware/userController.js";
 
