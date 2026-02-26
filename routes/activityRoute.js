@@ -7,4 +7,5 @@ const router = express.Router();
 // Track user activity
 router.post("/", verifyToken, trackActivity);
 
-export default router;
+
+export { router as activityRoute };

@@ -6,4 +6,5 @@ const router = express.Router();
 // Translate text
 router.post("/", translateText);
 
-export default router;
+
+export { router as translationRoute };

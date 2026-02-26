@@ -10,4 +10,5 @@ router.get("/", getAllTouristPlaces);
 router.get("/nearby", getNearbyPlaces);
 router.get("/:id", getTouristPlaceById);
 
-export default router;
+
+export { router as touristRoute };
