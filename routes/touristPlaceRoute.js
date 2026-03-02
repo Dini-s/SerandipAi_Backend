@@ -5,7 +5,7 @@ import { addTouristPlace, getAllTouristPlaces, getNearbyPlaces, getTouristPlaceB
 
 const router = express.Router();
 
-router.post("/AddNew", verifyToken, upload.array("images", 5), addTouristPlace);
+router.post("/AddNew", upload.array("images", 5), addTouristPlace);
 router.get("/", getAllTouristPlaces);
 router.get("/nearby", getNearbyPlaces);
 router.get("/:id", getTouristPlaceById);
